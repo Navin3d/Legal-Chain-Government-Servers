@@ -132,3 +132,6 @@ dist
 .DS_Store
 .Ds_Store
 */package-lock.json
+*/.gitignore.bak
+.gitignore.bak
+package-lock.json

@@ -131,4 +131,4 @@ dist
 
 .DS_Store
 .Ds_Store
-*/package-lock.json
+.package-lock.json

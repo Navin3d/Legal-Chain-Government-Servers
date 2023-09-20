@@ -1,4 +1,5 @@
 import logger from "slf3d";
+import { v4 } from "uuid";
 import { findAssetIdsByUserId } from "./users.aggregate.js";
 import User from "../models/User.model.js";
 
@@ -30,6 +31,32 @@ export const addUserAssetId      = async (userId, assetId) => {
             { upsert: true }
         );
     } catch(err) {
+        logger.error(err.message);
+        console.log(err);
+        throw err;
+    }
+}
+
+export const createUserRecord    = async (name, email, mobileNumber, assetId) => {
+    try {
+        const userId = v4();
+        await User.updateOne(
+            { user_id: userId },
+            {
+                $setOnInsert: {
+                    user_id: userId,
+                    name,
+                    email,
+                    mobile_number: mobileNumber,
+                },
+                $addToSet: {
+                    asset_ids: assetId
+                }
+            },
+            { upsert: true }
+        );
+        return userId;
+    } catch(e) {
         logger.error(err.message);
         console.log(err);
         throw err;

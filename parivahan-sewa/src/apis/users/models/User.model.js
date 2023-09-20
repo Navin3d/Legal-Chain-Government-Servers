@@ -7,6 +7,28 @@ const user = new Schema({
         required: true,
         unique: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
+    mobile_number: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    otp: {
+        type: String,
+        required: false,
+    },
+    otp_used: {
+        type: Boolean,
+        required: true,
+    },
     asset_ids   : [String]
 }, {
     id: false,

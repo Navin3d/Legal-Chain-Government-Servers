@@ -32,8 +32,11 @@
     "express-fileupload": "^1.4.0",
     "kubo-rpc-client": "^3.0.1",
     "mongoose": "^7.5.2",
+    "nodemailer": "^6.9.5",
     "nodemon": "^3.0.1",
     "slf3d": "^0.0.3",
+    "twilio": "^4.17.0",
+    "uuid": "^9.0.0",
     "web3": "^1.8.1"
   }
 }

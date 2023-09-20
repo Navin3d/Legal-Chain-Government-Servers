@@ -1,6 +1,3 @@
-// const logger           = require("@navin3d/log");
-// const userService      = require("../../users/services");
-// const contractService  = require("../service/contract.service");
 import logger from "slf3d";
 import { addUserAssetId, getUserAssetIds } from "../../users/services/index.js";
 import { findAssetByAssetId, findAssetByUserId, saveAssetService } from "../service/contract.service.js";

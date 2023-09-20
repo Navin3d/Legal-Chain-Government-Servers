@@ -1,6 +1,3 @@
-// const mongoose             =    require('mongoose');
-// const logger               =    require('@navin3d/log');
-// const { DATABASE_URL }     =    require("../index");
 import mongoose from 'mongoose';
 import logger from 'slf3d';
 import { DATABASE_URL } from '../index.js';

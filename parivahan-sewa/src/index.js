@@ -1,10 +1,3 @@
-// const express                   = require("express");
-// const cors                      = require("cors");
-// const logger                    = require("@navin3d/log");
-// const bodyParser                = require("body-parser");
-// const { PORT }                  = require("./config");
-// const contractAPI               = require("./apis/contract");
-// const dbConnection              = require("./config/mongoose");
 import express from "express";
 import cors from "cors";
 import logger from "slf3d";

@@ -1,5 +1,3 @@
-// const Web3             = require("web3");
-// const { WEB3PROVIDER } = require("../index");
 import Web3 from "web3";
 import { WEB3PROVIDER } from "../index.js";
 

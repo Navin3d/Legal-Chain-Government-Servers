@@ -1,6 +1,3 @@
-// const logger                        = require("@navin3d/log");
-// const { findAssetIdsByUserId }      = require("./users.aggregate");
-// const User                          = require("../models/User.model");
 import logger from "slf3d";
 import { findAssetIdsByUserId } from "./users.aggregate.js";
 import User from "../models/User.model.js";

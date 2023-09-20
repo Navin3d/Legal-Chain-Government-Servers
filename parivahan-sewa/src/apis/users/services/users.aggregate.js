@@ -1,4 +1,3 @@
-// const User                  = require('../models/User.model');
 import User from '../models/User.model.js';
 
 export const findAssetIdsByUserId   = async (userId) => {

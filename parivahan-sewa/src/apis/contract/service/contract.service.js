@@ -1,8 +1,3 @@
-// const logger                    = require("@navin3d/log");
-// const { getAccounts }           = require("../../../config/web3");
-// const { getUserAssetIds }       = require("../../users/services/index");
-// const { writeDataToCSV }        = require("../../../utils/csv.utils");
-// const comprehensiveContract     = require("../../../config/web3/chain.config");
 import logger from "slf3d";
 import { getAccounts } from "../../../config/web3/index.js";
 import { getUserAssetIds } from "../../users/services/index.js";

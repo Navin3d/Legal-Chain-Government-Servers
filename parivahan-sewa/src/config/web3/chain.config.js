@@ -1,5 +1,3 @@
-// const { CONTRACTADDRESS } = require("../index");
-// const { web3 }            = require("./index");
 import { CONTRACTADDRESS } from '../index.js';
 import { web3 } from './index.js';
 

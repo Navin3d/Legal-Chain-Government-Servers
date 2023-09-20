@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "56192dd6-836e-4748-8d61-98b215d45b1a",
+		"name": "Comprehensive Smart Contract Solidity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17195439"
+	},
+	"item": [
+		{
+			"name": "Post Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"assetId\": \"2\",\n    \"userId\": \"smnavin3d@gmail.com\",\n    \"assetData\": \"{\\\"Key 2\\\": \\\"value 2\\\"}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/contract/asset",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contract",
+						"asset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Asset",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contract/asset/user/smnavin3d@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contract",
+						"asset",
+						"user",
+						"smnavin3d@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contract/asset/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contract",
+						"asset",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

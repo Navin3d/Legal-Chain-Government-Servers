@@ -52,7 +52,7 @@ export const findAssetByAssetId = async (hashId) => {
         let data = {
             assetId : hashId,
             userId  : response[1],
-            data    : response[2],
+            data    : JSON.parse(response[2]),
         }
         return data
     } catch (err) {

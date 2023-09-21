@@ -56,7 +56,7 @@ export const createUserRecord    = async (name, email, mobileNumber, assetId) =>
             { upsert: true }
         );
         return userId;
-    } catch(e) {
+    } catch(err) {
         logger.error(err.message);
         console.log(err);
         throw err;

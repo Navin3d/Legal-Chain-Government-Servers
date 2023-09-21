@@ -1,3 +1,4 @@
-assetId, userId             , timestamp
-asset-1, smnavin65@gmail.com, Wed Sep 20 2023 09:39:39 GMT+0530 (India Standard Time)
-asset-1, smnavin65@gmail.com, Wed Sep 20 2023 09:43:37 GMT+0530 (India Standard Time)
+assetId                             , userId                              , timestamp
+asset-1                             , smnavin65@gmail.com                 , Wed Sep 20 2023 09:39:39 GMT+0530 (India Standard Time)
+asset-1                             , smnavin65@gmail.com                 , Wed Sep 20 2023 09:43:37 GMT+0530 (India Standard Time)
+d42b5ba5-ab8e-405c-953f-ae55e01f4310, 99036457-1b0f-47ef-8f49-cf1d73e17779, Thu Sep 21 2023 13:18:41 GMT+0530 (India Standard Time)

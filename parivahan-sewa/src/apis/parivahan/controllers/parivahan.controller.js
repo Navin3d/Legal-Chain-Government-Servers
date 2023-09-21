@@ -93,11 +93,7 @@ export const getLicense = async (req, res) => {
             });
         const assetId = asset[0]["assets"][0]["id"];
         const assetFromChain = await findAssetByAssetId(assetId);
-        return res.status(200).json({
-            message: "Otp Sent to your registered email.",
-            status: 1,
-            asset: assetFromChain["data"],
-        });
+        return res.status(200).json(assetFromChain["data"]);
     } catch (e) {
         logger.error(e);
         return res.status(500).json({

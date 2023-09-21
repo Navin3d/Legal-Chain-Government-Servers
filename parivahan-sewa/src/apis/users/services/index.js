@@ -3,20 +3,21 @@ import { v4 } from "uuid";
 import { findAssetIdsByUserId } from "./users.aggregate.js";
 import User from "../models/User.model.js";
 
-export const getUserAssetIds     = async (userId) => {
+export const getUserAssetIds = async (userId) => {
     logger.log("Getting Asset Ids to User...");
 
     try {
-        const assetIds    = await findAssetIdsByUserId(userId);
-        return assetIds[0]["asset_ids"];
-    } catch(err) {
+        const assetIds = await findAssetIdsByUserId(userId);
+        console.log("assetsIds: ", assetIds);
+        return assetIds[0]["assets"];
+    } catch (err) {
         logger.error(err.message);
         console.log(err);
         throw err;
     }
 }
 
-export const addUserAssetId      = async (userId, assetId) => {
+export const addUserAsset = async (userId, asset) => {
     try {
         await User.updateOne(
             { user_id: userId },
@@ -25,19 +26,19 @@ export const addUserAssetId      = async (userId, assetId) => {
                     user_id: userId,
                 },
                 $addToSet: {
-                    asset_ids: assetId
+                    assets: asset
                 }
             },
             { upsert: true }
         );
-    } catch(err) {
+    } catch (err) {
         logger.error(err.message);
         console.log(err);
         throw err;
     }
 }
 
-export const createUserRecord    = async (name, email, mobileNumber, assetId) => {
+export const saveUser = async (name, email, mobileNumber, asset) => {
     try {
         const userId = v4();
         await User.updateOne(
@@ -50,13 +51,13 @@ export const createUserRecord    = async (name, email, mobileNumber, assetId) =>
                     mobile_number: mobileNumber,
                 },
                 $addToSet: {
-                    asset_ids: assetId
+                    assets: asset
                 }
             },
             { upsert: true }
         );
         return userId;
-    } catch(err) {
+    } catch (err) {
         logger.error(err.message);
         console.log(err);
         throw err;

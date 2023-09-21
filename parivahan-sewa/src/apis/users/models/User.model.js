@@ -29,7 +29,11 @@ const user = new Schema({
         type: Boolean,
         required: true,
     },
-    asset_ids   : [String]
+    assets: [{
+        id: String,
+        type: String,
+        ref: String
+    }]
 }, {
     id: false,
     toObject: { virtuals: true, getters: true },

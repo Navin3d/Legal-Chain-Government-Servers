@@ -1,12 +1,12 @@
-import User from "../models/User.model";
+import User from "../models/User.model.js";
 
-export const generateOTP = async (mobileNumber) => {
-    const sixDigitRandomNumber = Math.floor(100000 + Math.random() * 900000);
-    const foundUser = await User.countDocuments({ mobile_number: mobileNumber });
-    if(foundUser == 0)
+export const generateOTP = async (email) => {
+    const foundUser = await User.countDocuments({ email });
+    if (foundUser == 0)
         throw "User Not Found";
+    const sixDigitRandomNumber = Math.floor(100000 + Math.random() * 900000);
     await User.updateOne(
-        { mobile_number: mobileNumber },
+        { email },
         {
             $set: {
                 otp: sixDigitRandomNumber,
@@ -17,19 +17,20 @@ export const generateOTP = async (mobileNumber) => {
     return sixDigitRandomNumber;
 }
 
-export const verifyOTP = async (mobileNumber, otp) => {
-    const { matchedCount } = await User.updateOne(
+export const verifyOTP = async (email, otp) => {
+    const foundUser = await User.findOneAndUpdate(
         {
-            mobile_number: mobileNumber,
+            email,
             otp,
             otp_used: false,
         },
         {
-            $set: {
-                otp: "",
-                otp_used: true,
-            }
+            otp: "",
+            otp_used: true,
+        },
+        {
+            new: true,
         }
     );
-    return matchedCount == 0 ? false : true;
+    return foundUser;
 } 

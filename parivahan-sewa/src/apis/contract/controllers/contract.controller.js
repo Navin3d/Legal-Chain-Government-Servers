@@ -1,9 +1,9 @@
 import logger from "slf3d";
-import { addUserAssetId, getUserAssetIds } from "../../users/services/index.js";
+import { addUserAsset, getUserAssetIds } from "../../users/services/index.js";
 import { findAssetByAssetId, findAssetByUserId, saveAssetService } from "../service/contract.service.js";
 
 export const saveAsset = async (req, res) => {
-    const { assetId, userId, assetData } = req.body;
+    const { assetId, userId, assetData, type, ref } = req.body;
 
     if(!(assetId && userId && assetData))
         return res.status(400).json({
@@ -20,7 +20,12 @@ export const saveAsset = async (req, res) => {
 
     try {
         await saveAssetService(assetId, userId, assetData);
-        await addUserAssetId(userId, assetId);
+        const asset = {
+            id: assetId,
+            type,
+            ref
+        }
+        await addUserAsset(userId, asset);
         return res.status(201).json({
             message : "Successfully saved asset",
             status  : 1,

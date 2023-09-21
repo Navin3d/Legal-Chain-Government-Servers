@@ -9,7 +9,7 @@ export const getUserAssetIds = async (userId) => {
     try {
         const assetIds = await findAssetIdsByUserId(userId);
         console.log("assetsIds: ", assetIds);
-        return assetIds[0]["assets"];
+        return assetIds[0]["asset_ids"];
     } catch (err) {
         logger.error(err.message);
         console.log(err);
@@ -42,7 +42,7 @@ export const saveUser = async (name, email, mobileNumber, asset) => {
     try {
         const userId = v4();
         await User.updateOne(
-            { user_id: userId },
+            { email },
             {
                 $setOnInsert: {
                     user_id: userId,

@@ -1,38 +1,84 @@
 import User from '../models/User.model.js';
 
-export const findAssetIdsByUserId   = async (userId) => {
-    const assetIds          = await User.aggregate([
+export const findAssetIdsByUserId = async (userId) => {
+    const assetIds = await User.aggregate([
         {
-            $match    : {
-                user_id    : userId,
+            $match: {
+                user_id: userId,
             },
         },
         {
-            $project  : {
-                _id        : 0,
-                assets     : 0,
-                asset_ids  : '$assets.id',
+            $project: {
+                asset_ids: '$assets.id',
             },
         },
     ]);
     return assetIds;
 }
 
-export const findUserAndAsset = async (userId, type) => {
+export const findUserByAsset = async (type, ref) => {
     const asset = await User.aggregate([
         {
-            $match    : {
-                user_id    : userId,
-                assets     : {
+            $match: {
+                assets: {
+                    $elemMatch: { type, ref }
+                }
+            },
+        },
+        // {
+        //     $project  : {
+        //         assets     : 1,
+        //     },
+        // },
+    ]);
+    return asset;
+}
+
+export const findAssetByUser = async (email, type) => {
+    const asset = await User.aggregate([
+        {
+            $match: {
+                email,
+                assets: {
                     $elemMatch: { type }
                 }
             },
         },
         {
-            $project  : {
-                _id        : 0,
-                assets     : 1,
+            $project: {
+                assets: 1,
             },
         },
     ]);
+    return asset;
+}
+
+export const findAssetOfUser = async (email, type) => {
+    const asset = await User.aggregate([
+        {
+            $match: {
+                email,
+                assets: {
+                    $elemMatch: { type }
+                }
+            },
+        },
+        {
+            $addFields: {
+                assets: {
+                    $filter: {
+                        input: "$assets",
+                        as: "assets",
+                        cond: { $eq: ["$$assets.type", type] }
+                    }
+                }
+            }
+        },
+        {
+            $project: {
+                assets: 1,
+            }
+        }
+    ]);
+    return asset;
 }

@@ -30,9 +30,15 @@ const user = new Schema({
         required: true,
     },
     assets: [{
-        id: String,
-        type: String,
-        ref: String
+        id: {
+            type: String
+        },
+        type: {
+            type: String
+        },
+        ref: {
+            type: String
+        }
     }]
 }, {
     id: false,

@@ -29,6 +29,9 @@ export const verifyOTP = async (email, otp) => {
             otp_used: true,
         },
         {
+            select: {
+                assets: 1,
+            },
             new: true,
         }
     );
